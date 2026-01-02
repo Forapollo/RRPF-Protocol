@@ -51,3 +51,27 @@ Engines must return data keyed by strict section names:
 2. **Ignoring Limits**: Returning all 1000 rows when `limit=10`.
 3. **Unstable Ordering**: Returning rows in random order, which breaks digest verification.
 4. **Crashing on Missing Tables**: Engines should omit the section if a table is missing; the Runner handles partial checks.
+
+## Capability Annotations
+
+Engines can optionally declare their capabilities using decorators. This allows inspection of supported tables and events without executing queries.
+
+```python
+from rrpf.annotations import table, event
+
+class MyEngine:
+    @table(name="users", schema=UserSchema, max_rows=100)
+    def get_users(self):
+        # RRPF NEVER executes this method
+        pass
+
+    @event(name="logins", schema=LoginSchema, max_events=500)
+    def get_logins(self):
+        pass
+```
+
+RRPF provides tools to inspect these capabilities via `rrpf.annotations.inspect_engine_capabilities(engine)`.
+
+**Note**:
+*   RRPF **never** executes annotated functions. They serve only as metadata carriers.
+*   Annotations are **optional**. Engines can work without them.
