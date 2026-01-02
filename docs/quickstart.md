@@ -11,7 +11,7 @@ pip install rrpf-protocol
 This example demonstrates how to create a request, fulfill it using the reference in-memory engine, and inspect the response.
 
 ```python
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from rrpf import (
     RRPRequest, Intent, AsOf, Constraints, DataRequests, TableRequest,
     run_fulfillment
@@ -19,13 +19,14 @@ from rrpf import (
 from rrpf.examples import InMemoryEngine
 from rrpf.schemas.as_of import AsOfMode
 from rrpf.schemas.intent import IntentMode
+from rrpf.schemas.common import RequestID
 
 # 1. Create a minimal request
 request = RRPRequest(
     rrp_version="1.0",
-    request_id="req-123",
+    request_id=RequestID("req-123"),
     correlation_id="corr-abc",
-    requested_at=datetime.now(UTC),
+    requested_at=datetime.now(timezone.utc),
     intent=Intent(name="quickstart", mode=IntentMode.SNAPSHOT),
     as_of=AsOf(mode=AsOfMode.LATEST, timestamp=None),
     constraints=Constraints(max_total_rows=100, max_groups=10, fail_on_partial=True),
