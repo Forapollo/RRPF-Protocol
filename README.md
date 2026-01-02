@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/assets/logo.png" alt="RRPF Protocol" width="120">
+</p>
+
 # RRPF Protocol
 
 **A deterministic protocol for explicitly scoped request fulfillment and immutable, replayable reasoning payloads.**
