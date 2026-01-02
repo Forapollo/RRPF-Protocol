@@ -47,6 +47,30 @@ RRPF (Reasoning Request & Fulfillment Protocol) is a formal specification and re
 *   **Not an LLM wrapper**: RRPF is agnostic to how the data is consumed. It provides the ground truth; it does not perform the inference.
 *   **Not a reasoning engine**: It provides the *context* for reasoning, but does not perform the reasoning itself.
 
+## Execution Model
+
+RRPF defines *what* is requested, not *how* it is fulfilled. It is a protocol layer that orchestrates the request lifecycle, enforces constraints, and calculates cryptographic proofs, but it relies entirely on user-defined **Fulfillment Engines** to perform actual data retrieval.
+
+### RRPF Never Accesses Data Sources
+
+**RRPF never accesses databases, APIs, or storage systems.**
+
+It intentionally excludes:
+*   SQL generation or execution
+*   ORM / Database connectivity
+*   HTTP API calls
+*   Business logic implementation
+*   Authorization checks
+*   Caching layers
+
+This separation exists to guarantee **determinism**, **safety**, and **auditability**. By treating the engine as an opaque black box, RRPF ensures that the protocol remains completely engine-agnostic and that the "reasoning context" is captured purely by the data returned, regardless of where it came from.
+
+```text
+Caller → RRPF Protocol → Fulfillment Engine → Data Source
+       (Orchestration)   (Data Retrieval)    (System of Record)
+```
+RRPF operates strictly at the protocol boundary.
+
 ## Core Concepts
 
 ### RRPRequest
