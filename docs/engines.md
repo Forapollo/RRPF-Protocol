@@ -56,8 +56,11 @@ Engines must return data keyed by strict section names:
 
 Engines can optionally declare their capabilities using decorators. This allows inspection of supported tables and events without executing queries.
 
+See [Engine Capability Annotations](annotations.md) for full documentation and examples.
+
 ```python
 from rrpf.annotations import table, event
+
 
 class MyEngine:
     @table(name="users", schema=UserSchema, max_rows=100)

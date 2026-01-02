@@ -5,17 +5,13 @@ from typing import Any, cast
 
 import rrpf
 from rrpf.fulfillment.engine import FulfillmentEngine, FulfillmentResult
-from rrpf.schemas.as_of import AsOfMode
+from rrpf.schemas.as_of import AsOf, AsOfMode
 from rrpf.schemas.common import CorrelationID, Digest, RequestID
+from rrpf.schemas.constraints import Constraints
 from rrpf.schemas.data_requests import DataRequests, TableRequest
-from rrpf.schemas.intent import IntentMode
+from rrpf.schemas.intent import Intent, IntentMode
 from rrpf.schemas.provenance import QueryStats
-from rrpf.schemas.request import (
-    AsOf,
-    Constraints,
-    Intent,
-    RRPRequest,
-)
+from rrpf.schemas.request import RRPRequest
 
 
 @dataclass
@@ -125,6 +121,7 @@ def test_missing_section_partial_allowed() -> None:
     assert result.response.errors is not None
     assert len(result.response.errors) == 1
     assert result.response.errors[0].code == "missing_section"
+    assert result.response.errors[0].section is not None
     assert "table:t1" in result.response.errors[0].section
 
 

@@ -2,8 +2,8 @@ import rrpf
 
 
 def test_package_version() -> None:
-    """Assert package version is exactly 0.1.0"""
-    assert rrpf.__version__ == "0.1.0"
+    """Assert package version is exactly 0.2.0"""
+    assert rrpf.__version__ == "0.2.0"
 
 
 def test_protocol_version_lock() -> None:

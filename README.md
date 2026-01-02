@@ -35,8 +35,8 @@ These are not AI problems; they are systems problems. They require a strict prot
 RRPF (Reasoning Request & Fulfillment Protocol) is a formal specification and reference implementation designed to solve these state management issues.
 
 *   **Deterministic**: Identical requests always produce identical cryptographic digests.
-*   **Engine-Agnostic**: The protocol defines the interface; the implementation (SQL, Vector DB, API) is swappable.
-*   **Schema-First**: All interactions are governed by strict, versioned schemas.
+*   **Engine-agnostic**: Pluggable fulfillment engines with optional [capability annotations](docs/annotations.md).
+*   **Schema-first**: Strict validation of every request.
 *   **Replayable**: Every fulfilled response carries a digest that allows for bit-perfect replay of the reasoning context.
 *   **Cryptographically Addressed**: Payloads are identified by the hash of their inputs and configuration, not by arbitrary IDs.
 

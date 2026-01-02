@@ -10,6 +10,6 @@ RRPF follows semantic versioning with strict backward compatibility guarantees.
 
 ## Guarantees
 
-*   **0.1.x**: Guarantees no breaking changes within the 0.1 series.
+*   **0.x.x**: Pre-release stability. Breaking changes may occur but are minimized.
 *   **Protocol Frozen**: RRPF protocol law is frozen at `rrp_version = "1.0"`.
 *   **Immutability**: Stored payloads from earlier versions in the same major series remain replayable.

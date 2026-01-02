@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.2.0
+
+*   Added engine-side capability annotations (`@table`, `@event`)
+*   Declarative, static capability contracts
+*   No runtime enforcement (introspection-only)
+*   Backward compatible
+
 ## v0.1.0
 
 *   Initial public release
