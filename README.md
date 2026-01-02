@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo.png" alt="RRPF Protocol" width="120">
+  <img src="docs/assets/logo.png" alt="RRPF Protocol" width="unset" height="200px">
 </p>
 
 # RRPF Protocol
